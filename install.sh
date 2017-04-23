@@ -27,8 +27,13 @@ getdeps(){
 }
 
 clear
-echo "Installing dependencies..."
 
-getdeps
+if [[ $EUID -ne 0 ]]; then
+	echo "Run dis as ROOT yo!" 1>&2
+	exit 1
+else
+	echo "Installing dependencies..."
+	getdeps
+fi
 
 echo "Done!"
