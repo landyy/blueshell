@@ -2,10 +2,10 @@
 
 getdeps(){
     if [ ! -d "/etc/python3" ]; then
-	
+
 	if [ -d "/etc/apt/" ]; then
 	    apt-get install python3
-	
+
 	elif [ -d "/etc/pacman" ]; then
 	    pacman -S python3
 
@@ -19,10 +19,10 @@ getdeps(){
     fi
 
     if [ ! -f "/usr/bin/pip" ]; then
-	
+
 	if [ -d "/etc/apt/" ]; then
 	    apt-get install python-pip
-	
+
 	elif [ -d "/etc/pacman" ]; then
 	    pacman -S python-pip
 
