@@ -23,8 +23,8 @@ class ssh:
     def sendCommand(self,command):
         if(self.client):
             stdin, stdout, stderr = self.client.exec_command(command)
-	    
-	    #Some printing shit that i sorta understand
+
+            #Some printing shit that i sorta understand
             while not stdout.channel.exit_status_ready():
                 if stdout.channel.recv_ready():
                     alldata = stdout.channel.recv(1024)
@@ -34,7 +34,7 @@ class ssh:
 
                     print(str(alldata, "utf8"))
         else:
-	    #I honestly don't think this will ever get hit but oh well
+            #I honestly don't think this will ever get hit but oh well
             print("[-] Error: Connection Not Opened")
 
 
@@ -52,7 +52,7 @@ except IOError:
     exit()
 
 for line in fd:
-    
+
     #Grab user input. Designed so you can just spam enter a shit ton
     theuser = input("[*] Enter a user to connect to %s: (root) " % line.replace('\n','')) or "root"
     theport = input("[*] Enter the port ssh is listening on: (22) ") or 22
@@ -61,7 +61,7 @@ for line in fd:
     try:
         connection = ssh(line,int(theport),theuser,thepassword)
     except socket_error:
-	#DONT CONNECT TO ME OR MY BOX EVER AGAIN
+        #DONT CONNECT TO ME OR MY BOX EVER AGAIN
         print("[-] Error: Cannot SSH to {0}, are we already pwned? :/".format(line.replace('\n','')))
         exit()
     connection.sendCommand("mkdir itworked; cd itworked; touch childern;")
