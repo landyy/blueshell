@@ -20,9 +20,9 @@ getdeps(){
     fi
 
     if [ ! -d "/usr/local/lib/python3.5/dist-packages/paramiko/" ]; then
-
 	pip3 install paramiko
-
+    else
+	    echo "Something wrong with python-pip"
     fi
 }
 
