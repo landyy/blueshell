@@ -7,7 +7,7 @@ getdeps(){
 	    apt-get update; apt-get install python3 python-pip
 
 	elif [ -d "/etc/pacman.d" ]; then
-	    pacman -Syu python3 python-pip
+	    pacman -Sy python3 python-pip
 
 	elif [ -d "/etc/yum" ]; then
 	    yum update; yum install python3 python-pip
