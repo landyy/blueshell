@@ -4,36 +4,19 @@ getdeps(){
     if [ ! -d "/etc/python3" ]; then
 
 	if [ -d "/etc/apt/" ]; then
-	    apt-get install python3
+	    apt-get install python3 python-pip
 
 	elif [ -d "/etc/pacman" ]; then
-	    pacman -S python3
+	    pacman -S python3 python-pip
 
 	elif [ -d "/etc/yum" ]; then
-	    yum install python3
+	    yum install python3 python-pip
 
 	else
-	    echo "We are in a terrible hell. No package managers available :("
+	    echo "CRIT: No packagemanager recognized..WE ARE BAILING..\n
+	    You are on your own!"
 	    exit 1
 	fi
-    fi
-
-    if [ ! -f "/usr/bin/pip" ]; then
-
-	if [ -d "/etc/apt/" ]; then
-	    apt-get install python-pip
-
-	elif [ -d "/etc/pacman" ]; then
-	    pacman -S python-pip
-
-	elif [ -d "/etc/yum" ]; then
-	    yum install python-pip
-
-	else
-	    echo "We are in a terrible hell. No package managers available :("
-	    exit 1
-	fi
-
     fi
 
     if [ ! -d "/usr/local/lib/python3.5/dist-packages/paramiko/" ]; then
