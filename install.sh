@@ -29,7 +29,7 @@ getdeps(){
 clear
 
 if [[ $EUID -ne 0 ]]; then
-	echo "Run this as root!" 1>&2
+	echo "Run dis as ROOT yo!" 1>&2
 	exit 1
 else
 	echo "Installing dependencies..."
